@@ -58,7 +58,16 @@ const checkPermutation = (str1, str2) => {
     }
     return isPerm;
 } 
-console.log(checkPermutation(testStr3, testStr2))
+//console.log(checkPermutation(testStr3, testStr2))
 
 
 //URLify: Write a method to replace all spaces in a string with '%20'.You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. (Note: If implementing in Java, please use a character array so that you can perform this operation in place.)
+
+const testStr4 = "www.testurl.com/?=search term divided by spaces"
+
+const URLify = (str) => {
+    let regexp = /\s/g
+    return str.replace(regexp, '%20')
+}
+
+console.log(URLify(testStr4))
