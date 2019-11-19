@@ -26,13 +26,14 @@ const uniq = (str) => {
 
 
 //Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+
 const strToObj = (testStr) => {
-    const letterArr = testStr.split("");
+     const letterArr = testStr.split("");
     //remove spaces
     const filteredArr = letterArr.filter((character) => { return character !== ' ' })
     //sort array for readability
     filteredArr.sort()
-    const strObj = [];
+    const strObj = {};
     const uniqueChars = [];
     filteredArr.forEach((character) => {
     if(!uniqueChars.includes(character)){
@@ -70,4 +71,52 @@ const URLify = (str) => {
     return str.replace(regexp, '%20')
 }
 
-console.log(URLify(testStr4))
+URLify(testStr4)
+
+// Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+
+const testStr5 = "tact coa"
+const testStr6 = "ten animals i slam in a net"
+const testStr7 = "aabbccddeeeeffffdddddd"
+const testStr8 = "gohangasalami"
+
+//get string length without spaces
+const lengthWithoutSpaces = str => {
+  const letterArr = str.split("");
+  const filteredArr = letterArr.filter(character => {
+    return character !== " ";
+  });
+  return filteredArr.length;
+};
+
+// if string length is even and all letters are even, it passes
+const checkPalinPerm = (str) => {
+    const strLen = lengthWithoutSpaces(str);
+    //split characters to map
+    const charMap = strToObj(str);
+    //count number of characters that appear an odd or even number of times
+    let oddCounter = 0;
+    let evenCounter = 0;
+    for (char in charMap){
+        charMap[char] % 2 === 0 ? evenCounter++ : oddCounter++
+    }
+    //console.log(charMap, strLen, oddCounter, evenCounter);
+    //if string length is even, if there are no odd appearances of characters, return true
+    if(strLen % 2 === 0){
+        if(oddCounter === 0){
+        return true;
+        }
+    // or, if string length is odd, and there is only 1 odd appearance of characters, return true
+    } else if(oddCounter === 1) {
+        return true
+    }
+    return false;
+    
+    
+}
+
+console.log(checkPalinPerm(testStr5));
+console.log(checkPalinPerm(testStr6));
+console.log(checkPalinPerm(testStr7));
+console.log(checkPalinPerm(testStr8));
+
