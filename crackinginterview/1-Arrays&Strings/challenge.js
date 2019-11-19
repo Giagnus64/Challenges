@@ -122,6 +122,46 @@ const checkPalinPerm = (str) => {
 
 // One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character.Given two strings, write a function to check if they are one edit(or zero edits) away.
 
+const testArr1 = ['pine', 'pin'];
+const testArr2 = ['lime', 'rime'];
+const testArr3 = ['limit', 'lim'];
+
+const oneAway = (str1, str2) => {
+    const strLen1 = str1.length;
+    const strLen2 = str2.length;
+    let larger;
+    let smaller;
+
+    if (Math.abs(strLen1 - strLen2) > 1) {
+        return false;
+    }
+
+    if(strLen1 >= strLen2){
+        larger = strToObj(str1);
+        smaller = strToObj(str2);
+    } else {
+        larger = strToObj(str2);
+        smaller = strtoObj(str1)
+    }
+
+    let differences = 0;
+
+    for(char in larger){
+        if (smaller[char]){
+            differences += Math.abs(larger[char] - smaller[char])
+        } else{
+            differences += larger[char];
+        }
+    }
+    if(differences > 1){
+        return false
+    }
+    return true;
+}
+
+// console.log(oneAway(testArr3[0], testArr3[1]));
+// console.log(oneAway(testArr2[0], testArr2[1]));
+// console.log(oneAway(testArr1[0], testArr1[1]));
 
 
 // String Compression: Implement a method to perform basic string compression using the counts of repeated characters.For example, the string aabcccccaaa would become a2blc5a3, If the "compressed" string would not become smaller than the original string, your method should return the original string.You can assume the string has only uppercase and lowercase letters(a - z).
