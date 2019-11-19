@@ -115,8 +115,44 @@ const checkPalinPerm = (str) => {
     
 }
 
-console.log(checkPalinPerm(testStr5));
-console.log(checkPalinPerm(testStr6));
-console.log(checkPalinPerm(testStr7));
-console.log(checkPalinPerm(testStr8));
+// console.log(checkPalinPerm(testStr5));
+// console.log(checkPalinPerm(testStr6));
+// console.log(checkPalinPerm(testStr7));
+// console.log(checkPalinPerm(testStr8));
 
+// One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character.Given two strings, write a function to check if they are one edit(or zero edits) away.
+
+
+
+// String Compression: Implement a method to perform basic string compression using the counts of repeated characters.For example, the string aabcccccaaa would become a2blc5a3, If the "compressed" string would not become smaller than the original string, your method should return the original string.You can assume the string has only uppercase and lowercase letters(a - z).
+
+const testStr9 = "aabcccccaaa"
+const testStr10 = "aaaabbbcddccccssaaaw"
+const testStr11 = "abcdefg"
+
+const compress = (str) => {
+    const length = str.length;
+    const strArr = str.split('');
+    const charObjArr = [];
+    let counter = 1;
+    for(let i = 0; i < strArr.length; i++){
+        if(strArr[i] === strArr[i + 1]){
+            counter++;
+        } else{
+           charObjArr.push({[strArr[i]]: counter})
+           counter = 1; 
+        }
+    }
+    let finalStr = "";
+    charObjArr.forEach((charObj) => {
+        finalStr += Object.keys(charObj)[0];
+        finalStr += Object.values(charObj)[0];
+    })
+    if(finalStr.length >= length){
+        return str
+    }
+    return finalStr
+}
+// console.log(compress(testStr9));
+// console.log(compress(testStr10));
+// console.log(compress(testStr11));
