@@ -49,7 +49,7 @@ class LinkedList {
            newNode.next = this.head
            this.head = newNode 
         } else {
-            while(!counter + 1 == location){
+            while(counter + 1 !== location){
                 current = current.next
                 counter++;
             }
@@ -60,8 +60,37 @@ class LinkedList {
         return newNode;
     }
     // removeFrom(location) 
+    removeFrom(location){
+        //location is an INDEX, starting from 0
+        let counter = 0;
+        let current = this.head;
+        if(location === 0){
+            this.head = this.head.next
+        } else{
+            while (counter + 1 !== location){
+                current = current.next
+                counter++;
+                console.log(current);
+            }
+            current.next = current.next.next
+        }
+        this.size--;
+
+    }
     // removeElement(element) 
-  
+    removeElement = (element) => {
+        let current = this.head;
+        if(current.element === element){
+            this.head = current.next
+        } else {
+            while (current.next.element !== element) {
+                    current = current.next
+                    counter++;
+                }
+                current.next = current.next.next
+            }
+            this.size--;
+    }
     //helpers
     isEmpty(){
         if(this.size > 0){
@@ -100,4 +129,7 @@ node4.next = node5
 
 
 
-//console.log(testList);
+testList.removeElement('a');
+//testList.insertAt('test', 3);
+console.log(testList);
+testList.printList();
