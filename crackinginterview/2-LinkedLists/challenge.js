@@ -91,19 +91,36 @@ class LinkedList {
             }
             this.size--;
     }
-    removeDups = () => {
-        let current = this.head;
-        let uniqElements = [];
-        while (current.next) {
-            if (uniqElements.includes(current.next.element)) {
-                current.next = current.next.next
-            } else {
-                uniqElements.push(current.element)
-                current = current.next
-            }
+    // removeDups = () => {
+    //     let current = this.head;
+    //     let uniqElements = [];
+    //     while (current.next) {
+    //         if (uniqElements.includes(current.next.element)) {
+    //             current.next = current.next.next
+    //         } else {
+    //             uniqElements.push(current.element)
+    //             current = current.next
+    //         }
 
-        }
-    } 
+    //     }
+    // } 
+    // removeDupsNoBuffer = () => {
+    //     let current = this.head;
+    //     let searcher = this.head;
+    //     while (current.next) {
+    //         //console.log('curr:', current, 'searcher:', searcher);
+    //         if (current.element === searcher.next.element) {
+    //             searcher.next = searcher.next.next
+                
+    //         } 
+    //         searcher = searcher.next
+    //         if (searcher === null || searcher.next === null) {
+    //             current = current.next
+    //             searcher = current.next;
+    //             //console.log(current);
+    //         }
+    //     }
+    // }
     //helpers
     isEmpty(){
         if(this.size > 0){
@@ -144,8 +161,8 @@ node4.next = node5
 
 //testList.removeElement('a');
 //testList.insertAt('test', 3);
-console.log(testList);
-testList.printList();
+// console.log(testList);
+// testList.printList();
 testList.removeDups();
 testList.printList();
 
@@ -169,7 +186,18 @@ testList.printList();
 //FOLLOW UP
 // How would you solve this problem if a temporary buffer is not allowed ? Hints : #9, #40
 
-
+const removeDups = () => {
+    let current = this.head;
+    let searcher = this.head;
+    while(current.next){
+        if(searcher.next === null){
+            current = current.next
+        } else if(current.element === searcher.next.element) {
+            searcher.next = searcher.next.next
+            searcher = searcher.next
+        }
+    }
+}
 
 // Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 //     Hints: #8, #25, #41, #67, #126
