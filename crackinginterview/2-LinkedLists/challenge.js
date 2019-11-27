@@ -91,19 +91,21 @@ class LinkedList {
             }
             this.size--;
     }
-    // removeDups = () => {
-    //     let current = this.head;
-    //     let uniqElements = [];
-    //     while (current.next) {
-    //         if (uniqElements.includes(current.next.element)) {
-    //             current.next = current.next.next
-    //         } else {
-    //             uniqElements.push(current.element)
-    //             current = current.next
-    //         }
-
-    //     }
-    // } 
+    
+    returnKthToLast(number) {
+        if (number > this.size) {
+            return false
+        }
+        const nodeNum = this.size - number;
+        let counter = 0;
+        let current = this.head;
+        while (nodeNum !== counter) {
+            current = current.next
+            counter++;
+            //console.log(current)
+        }
+        return current;
+    } 
     // removeDupsNoBuffer = () => {
     //     let current = this.head;
     //     let searcher = this.head;
@@ -163,7 +165,8 @@ node4.next = node5
 //testList.insertAt('test', 3);
 // console.log(testList);
 // testList.printList();
-testList.removeDups();
+//testList.removeDups();
+console.log(testList.returnKthToLast(3));
 testList.printList();
 
 
@@ -188,7 +191,7 @@ testList.printList();
 
 const removeDups = () => {
     let current = this.head;
-    let searcher = this.head;
+    let searcher = this.size;
     while(current.next){
         if(searcher.next === null){
             current = current.next
@@ -202,7 +205,29 @@ const removeDups = () => {
 // Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 //     Hints: #8, #25, #41, #67, #126
 
+const returnKthToLast = (number) =>{
+    if (number > this.length){
+        return false
+    }
+    const nodeNum = length - number;
+    let counter = 1
+    let current = this.head;
+    while (nodeNum !== counter){
+        current = current.next
+    }
+    return current;
+}
+
 // Delete Middle Node: Implement an algorithm to delete a node in the middle(i.e., any node but the first and last node, not necessarily the exact middle) of a singly linked list, given only access to that node.
 //     EXAMPLE
 // Input: the node c from the linked list a - > b - > c - > d - > e - > f
 // Result: nothing is returned, but the new linked list looks like a -> b -> d -> e -> f Hints: #72
+const removeMiddleElement = (element) => {
+    let current = this.head;
+    while (current.next.element !== element) {
+        current = current.next
+    }
+        current.next = current.next.next
+    }
+    this.size--;
+}
