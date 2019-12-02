@@ -48,8 +48,8 @@ console.log(finalChars)
 
 
 //TEST if length of array with remaining characters is greater than 50
-const filteredTest = filteredArr.filter((character) => {return (character === 'e' || character === 't')})
-console.log(filteredTest, filteredTest.length)
+// const filteredTest = filteredArr.filter((character) => {return (character === 'e' || character === 't')})
+// console.log(filteredTest, filteredTest.length)
 // sorted.forEach((character) => {
 //     if(!uniqueChars.includes(character)){
 //         uniqueChars.push(character)
