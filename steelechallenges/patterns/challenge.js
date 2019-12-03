@@ -109,3 +109,33 @@ function averagePair(arr, avg) {
     }
     return false;
 }
+// FASTER SOLUTION
+function averagePair(arr, num) {
+    let start = 0
+    let end = arr.length - 1;
+    while (start < end) {
+        let avg = (arr[start] + arr[end]) / 2
+        if (avg === num) return true;
+        else if (avg < num) start++
+        else end--
+    }
+    return false;
+}
+
+//********************** SLIDING WINDOW PATTERN *********************/
+
+function maxSubarraySum(arr, num) {
+    // add whatever parameters you deem necessary - good luck!
+    if (num > arr.length) return null;
+    let maxSum = 0;
+    let tempSum = 0;
+    for (let i = 0; i < num; i++) {
+        maxSum += arr[i];
+    }
+    tempSum = maxSum;
+    for (let j = 1; j < arr.length - num + 1; j++) {
+        tempSum = (tempSum - arr[j - 1]) + arr[j + num - 1];
+        maxSum = Math.max(tempSum, maxSum);
+    }
+    return maxSum;
+}
