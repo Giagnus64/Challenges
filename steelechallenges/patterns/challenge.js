@@ -124,6 +124,7 @@ function averagePair(arr, num) {
 
 //********************** SLIDING WINDOW PATTERN *********************/
 
+// find maxSubarr
 function maxSubarraySum(arr, num) {
     // add whatever parameters you deem necessary - good luck!
     if (num > arr.length) return null;
