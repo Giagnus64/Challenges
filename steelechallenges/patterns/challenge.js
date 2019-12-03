@@ -180,3 +180,23 @@ function minSubArrayLen(arr, num){
     // else if it works, subtract the next number and repeat
   }
   minSubArrayLen([2,3,1,2,4,3],7)
+
+  //find longest substring of unique chars
+
+  function findLongestSubstring(str){
+    let longest = 0;
+    let start = 0;
+    let seen = {}
+    
+    for(let i = 0; i<str.length; i++){
+        let char = str[i];
+        if(seen[char]){
+            start = Math.max(start, seen[char]);
+        }
+            longest = Math.max(longest, i - start + 1);
+            
+            seen[str[i]] = i+1
+    }
+    return longest;
+        
+  }
