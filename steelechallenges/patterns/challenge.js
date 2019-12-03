@@ -25,7 +25,7 @@ const makeFreqTable = (str) => {
     return strTable
 }
 
-console.log(validAnagram('aaz', 'zza'));
+//console.log(validAnagram('aaz', 'zza'));
 
 //check same frequency of digits
 
@@ -140,3 +140,44 @@ function maxSubarraySum(arr, num) {
     }
     return maxSum;
 }
+
+//minSubArrayLen
+
+function minSubArrayLen(arr, num){
+    if(arr.length === 0) return null;
+  
+    let minLen = 0;
+    let arrSum = 0;
+    let counter = 0;
+    
+    while(arrSum < num && counter < arr.length){
+        arrSum += arr[counter];
+        counter++;
+    }
+    
+    if(arrSum < num) return 0;
+    
+    minLen = counter;
+    counter -= 1;
+    let starter = 0;
+    //console.log(minLen, counter, arrSum);
+    
+    while(counter < arr.length){
+       if((arrSum - arr[starter]) >= num){
+           arrSum = arrSum - arr[starter]
+           starter++;
+           minLen = Math.min(minLen, (counter - starter) + 1)
+       } else{
+           counter++;
+           arrSum = (arrSum - arr[starter]) + arr[counter]
+           starter++;
+       }
+       //console.log(arrSum, counter, starter, minLen)
+    }
+    
+    return minLen;
+    // once you reach it, subtract the first number - 
+    // if you get lower than the integer, add more onto the end of the array until you get high enough again
+    // else if it works, subtract the next number and repeat
+  }
+  minSubArrayLen([2,3,1,2,4,3],7)
