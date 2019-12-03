@@ -84,3 +84,28 @@ const areThereDuplicates = (...args) =>{
     }
     return false;
 }
+
+// check average
+const getAvg = (num1, num2) => {
+    return (parseFloat(num1) + parseFloat(num2)) / 2
+}
+
+function averagePair(arr, avg) {
+    let i = 0;
+    let j = 1;
+    if (arr.length === 0) {
+        return false;
+    }
+    while (i < arr.length - 1) {
+        if (getAvg(arr[i], arr[j]) === avg) {
+            return true
+        }
+        if (j === arr.length - 1) {
+            i++;
+            j = i + 1;
+        } else {
+            j++;
+        }
+    }
+    return false;
+}
