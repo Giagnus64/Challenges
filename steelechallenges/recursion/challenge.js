@@ -47,3 +47,31 @@ function collectOddValues(arr){
 }
 
 console.log(collectOddValues([1,2,3,4,5,6,7,8,9]))
+
+//REFACTOR W PURE RECURSION
+function collectOddValuesPure(arr){
+    //make a new array
+    let newArr = [];
+    // if the array passed in has no values, return the new array
+    if(arr.length === 0){
+        return newArr
+    }
+    //if the 1st element of the passed in array is odd, push it onto the new array
+    if(arr[0] % 2 !== 0){
+        newArr.push(arr[0])
+    }
+    //the new array pointer equals the new array plus the array returned by the function when the array is passed in minus the first value
+    newArr = newArr.concat(collectOddValues(arr.slice(1)));
+    return newArr;
+}
+
+function power(base, exponent){
+    if(exponent === 0) return 1;
+    return base * power(base, exponent - 1);
+}
+//console.log(power(2,0), power(2,2), power(2,4))
+
+function productOfArray(arr) {
+    if (arr.length === 0) return 1;
+    return arr[0] * productOfArray(arr.slice(1))
+}
