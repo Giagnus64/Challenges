@@ -29,38 +29,43 @@ let wrapperDiv = document.querySelector('#wrapper');
 
 
 let modalBox = document.createElement('div');
+modalBox.classList.add("modal-backdrop");
 modalBox.style.height = '100vh';
 modalBox.style.width = '100vw';
 modalBox.style.backgroundColor = 'rgba(0,0,0,.5)';
 modalBox.style.position = "fixed";
 modalBox.style.top = "0";
 modalBox.style.zIndex = "100";
+modalBox.style.display = "flex";
+modalBox.style.flexDirection = "column";
+modalBox.style.justifyContent = "center";
+modalBox.style.alignItems = "center";
 wrapperDiv.appendChild(modalBox);
 
-let modal = document.createElement('div');
-modal.innerHTML = `
+modalBox.innerHTML = `
 
-<div style="background:white; display:flex; flex-direction:column; font-weight:300;">
-    <div class="mini-cart-header">
-    <h3 style="width:100%;text-align:center;font-size:2rem">
-    Your Cart - <span>${cartObject.cartQuantity} items</span>
-    </h3>
-    <div>
-    <br>
-    <div>
-    <img src="${cartObject.cartImages[0]}">
-    <img src="${cartObject.cartImages[1]}">
-    <div>
-    <p>Estimated Total: ${cartObject.cartTotal}</p>
-    <div class="modal-buttons">
-    <a class="mini-cart-link-checkout primary-button" href="#">
+<div style="background:white; display:flex; flex-direction:column; align-items:center; width:70%; font-weight:300; margin:0 auto; padding:20px; max-width:700px;">
+    <div style="width:70%; text-align:center;">
+        <h2 class="mini-cart-header" style="font-size:2.2rem; margin-bottom:0;">
+            Your Cart - <span>${cartObject.cartQuantity} items</span>
+        </h2>
+    </div>
+    <div class="mini-cart-header" style="display:flex; flex-direction:row; justify-content: space-around; width:70%; margin-bottom:5px; padding:20px 0px;">
+        <img src="${cartObject.cartImages[0]}">
+        <img src="${cartObject.cartImages[1]}">
+    </div>
+    <h3 class="mini-cart-header" style="text-align:center; border:none; font-size:2rem;margin-bottom:5px;">Estimated Total: ${cartObject.cartTotal}</h3>
+    <div class="modal-buttons" style="display:flex; flex-direction:row; justify-content:space-around; align-items:center; width:65%;">
+        <a style="margin:10px; background: #cc0001;border: 1px solid #cc0001; color: #fff;" class="mini-cart-link-checkout primary-button" href="#">
         View Cart</a>
-    <a class="mini-cart-link-checkout primary-button" href="#">
+        <a style="margin:10px; background: #cc0001; border: 1px solid #cc0001; color: #fff;" class="mini-cart-link-checkout primary-button" href="#">
         Browse Site</a>
     </div>
 </div>
 `;
-modalBox.appendChild(modal);
+
+
+//modalBox.appendChild(modal);
 
 //     < div class="mini-cart-content" >
 //         <div class="mini-cart-header">
