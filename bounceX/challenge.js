@@ -76,6 +76,8 @@ const addModalFunctionality = () => {
             if(!event.target.classList.contains('view-cart-button')){
                 modal.style.display = "none";
             }
+            document.removeEventListener('scroll', displayModal);
+            setTimeout(() => {document.addEventListener('scroll', displayModal)}, 4000);
         }
 
         const triggerModal = () => {
