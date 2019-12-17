@@ -27,7 +27,7 @@ function factorial(num){
     if(num <= 1) return 1;
     return num * factorial(num-1)
 }
-console.log(factorial(5));
+//console.log(factorial(5));
 
 function collectOddValues(arr){
     let result = []
@@ -46,7 +46,7 @@ function collectOddValues(arr){
     return result;
 }
 
-console.log(collectOddValues([1,2,3,4,5,6,7,8,9]))
+//console.log(collectOddValues([1,2,3,4,5,6,7,8,9]))
 
 //REFACTOR W PURE RECURSION
 function collectOddValuesPure(arr){
@@ -74,4 +74,23 @@ function power(base, exponent){
 function productOfArray(arr) {
     if (arr.length === 0) return 1;
     return arr[0] * productOfArray(arr.slice(1))
+}
+
+//reverse a string
+
+function reverse(str){
+    if (str.length === 1) return str[0];
+    return str[str.length - 1] + reverse(str.slice(0, str.length - 1))
+}
+//console.log(reverse('string'));
+
+// isPalindrome('awesome') // false
+// isPalindrome('foobar') // false
+// isPalindrome('tacocat') // true
+// isPalindrome('amanaplanacanalpanama') // true
+// isPalindrome('amanaplanacanalpandemonium') // false
+
+function isPalindrome(str) {
+    // add whatever parameters you deem necessary - good luck!
+
 }
