@@ -1,9 +1,9 @@
 function countDown(num){
     if(num <= 0){
-        console.log("All done!");
+        //console.log("All done!");
         return;
     }
-    console.log(num);
+    //console.log(num);
     num--;
     countDown(num);
 }
@@ -11,7 +11,7 @@ function countDown(num){
 
 function sumRange(num){
     if(num === 1) return 1;
-    console.log(num)
+    //console.log(num)
     return num + sumRange(num - 1);
 }
 //sumRange(4);
@@ -84,13 +84,22 @@ function reverse(str){
 }
 //console.log(reverse('string'));
 
-// isPalindrome('awesome') // false
-// isPalindrome('foobar') // false
-// isPalindrome('tacocat') // true
+
 // isPalindrome('amanaplanacanalpanama') // true
 // isPalindrome('amanaplanacanalpandemonium') // false
 
 function isPalindrome(str) {
     // add whatever parameters you deem necessary - good luck!
-
+    if(str[0] === str[str.length - 1]){
+        if(str.length === 1){
+            return true
+        } else{
+            return isPalindrome(str.slice(1, str.length - 1))
+        }
+    } else{
+        return false
+    }
 }
+console.log(isPalindrome('awesome')) // false
+console.log(isPalindrome('foobar')) // false
+console.log(isPalindrome('tacocat'))// true)
