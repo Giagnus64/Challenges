@@ -25,3 +25,18 @@ function binarySearch(arr, ele){
     }
     return -1;
   }
+
+//count the number of times a smaller string appears in a larger string
+function naiveSearch(str, matchStr){
+    let count = 0;
+    for(let i = 0; i < str.length; i++){
+        for(let j = 0; j < matchStr.length; j++){
+            if(matchStr[j] !== str[i+j]) break;
+            if(j === matchStr.length - 1) count++;
+        }
+    }
+    return count;
+}
+console.log(naiveSearch("lorie loled", "pop"));
+console.log(naiveSearch("lorie loled", "lol"));
+console.log(naiveSearch("lorie loled", "lo"));

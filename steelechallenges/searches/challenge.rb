@@ -33,26 +33,10 @@ def binary_search(arr, ele)
 
     end
 
-    return -1
+    return -1 
 end
 
-puts binary_search([1,2,3,4,5,6,7,8,9], 3)
-puts binary_search([1,2,3,4,5,6,7,8,9,10,11], 4)
-puts binary_search([1,2,3,4,5,6,7,9,10,11], 8)
+# puts binary_search([1,2,3,4,5,6,7,8,9], 3)
+# puts binary_search([1,2,3,4,5,6,7,8,9,10,11], 4)
+# puts binary_search([1,2,3,4,5,6,7,9,10,11], 8)
 
-# function binarySearch(arr, ele){
-#     let lesser = 0;
-#     let greater = arr.length - 1;
-    
-#     while(lesser <= greater){
-#         let middle = Math.floor((lesser + greater) / 2)
-#         if (ele === arr[middle]){
-#             return middle
-#         } else if (ele < arr[middle]){
-#             greater = middle - 1;
-#         } else if(ele > arr[middle]){
-#             lesser = middle + 1;
-#         }
-#     }
-#     return -1;
-#   }
