@@ -40,3 +40,25 @@ end
 # puts binary_search([1,2,3,4,5,6,7,8,9,10,11], 4)
 # puts binary_search([1,2,3,4,5,6,7,9,10,11], 8)
 
+def naive_search(str, match_str)
+    count = 0
+    for i in 0...str.length do
+        
+        for j in 0...match_str.length do
+            
+            if(match_str[j] != str[i+j]) 
+                break
+            end
+            
+            if(j == match_str.length - 1)
+                count += 1
+            end
+
+        end
+
+    end
+
+    return count;
+end
+
+puts naive_search("lorie loled", "lol")
