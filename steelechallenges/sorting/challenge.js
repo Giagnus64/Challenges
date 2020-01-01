@@ -9,7 +9,7 @@ function swap (arr, index1, index2){
 // j end at comparing i - 1, enforcing the gatekeeping of the first loop
 // j goes through each element in the array
 // check for swaps with shortcircuit
-function bubbleSort(arr){
+function bubbleSortAlt(arr){
     let swaps;
 
     for(let i = arr.length; i > 0; i--){
@@ -76,4 +76,47 @@ function selectionSortAlt(arr){
     return arr;
 }
 //console.log(selectionSort([3,5,6,2,4,5,3,5,4]))
-console.log(selectionSortAlt([3,5,6,2,4,5,3,5,4]))
+//console.log(selectionSortAlt([3,5,6,2,4,5,3,5,4]))
+
+function insertionSortAlt(arr){
+    for(let i = 1; i < arr.length; i++){
+        let currentVal = arr[i];
+        
+        for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--){
+            arr[j+1] = arr[j];
+        }
+        arr[j+1] = currentVal
+
+    }
+    return arr;
+}
+
+function insertionSort(arr){
+    let beginningIndex = 1;
+    let currentIndex = 2;
+
+    while(beginningIndex < arr.length && currentIndex < arr.length){
+        
+        while(currentIndex >= 0){
+            currentVal = arr[currentIndex];
+            
+            if(currentVal <= arr[currentIndex - 1]){
+                swap(arr, currentIndex, currentIndex - 1);
+                currentIndex--;
+            } else{
+                break;
+            }
+        
+        }
+        beginningIndex++;
+
+        currentIndex = beginningIndex + 1;
+
+    }
+
+    return arr;
+}
+
+
+console.log(insertionSort([3, 5, 4, 2, 1]))
+console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
