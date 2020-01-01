@@ -29,5 +29,51 @@ function bubbleSort(arr){
 }
 
 //console.log(bubbleSort([8,4,6,2,7]))
-console.log(bubbleSort([8,1,2,3,4,5]))
+// console.log(bubbleSort([8,1,2,3,4,5]))
 //console.log(bubbleSort([8,4,6,2,1,34,56,25]))
+
+function selectionSort(arr){
+    let smallest = 0;
+    let current = 1;
+    let beginning = 0;
+    
+    while(beginning < arr.length){
+       
+        while(current < arr.length){
+
+            if(arr[smallest] > arr[current]){
+                smallest = current;
+            } 
+            current++;
+
+        }
+
+        if(smallest !== beginning){
+            swap(arr, smallest, beginning)
+        }
+
+        beginning++;
+        current = beginning + 1;
+        smallest = beginning;
+    }
+    return arr;
+}
+
+function selectionSortAlt(arr){
+    for(let i = 0; i < arr.length; i++){
+        let lowest = i;
+
+        for(let j = i+1; j< arr.length; j++){
+            if(arr[j] < arr[lowest]){
+                lowest = j;
+            }
+        }
+        if(i !== lowest){
+            swap(arr, i, lowest);
+        }
+
+    }
+    return arr;
+}
+//console.log(selectionSort([3,5,6,2,4,5,3,5,4]))
+console.log(selectionSortAlt([3,5,6,2,4,5,3,5,4]))
