@@ -43,7 +43,7 @@ end
 def naive_search(str, match_str)
     count = 0
     for i in 0...str.length do
-        
+
         for j in 0...match_str.length do
             
             if(match_str[j] != str[i+j]) 
@@ -61,4 +61,4 @@ def naive_search(str, match_str)
     return count;
 end
 
-puts naive_search("lorie loled", "lol")
+# puts naive_search("lorie loled", "lol")
