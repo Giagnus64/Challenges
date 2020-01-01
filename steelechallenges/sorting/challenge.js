@@ -5,6 +5,7 @@ function swap (arr, index1, index2){
     arr[index1] = arr[index2];
     arr[index2] = temp;
 }
+
 // i starts at the end of the array and is the "gatekeeper" for the last comparison, so we dont compare undefined
 // j end at comparing i - 1, enforcing the gatekeeping of the first loop
 // j goes through each element in the array
@@ -22,15 +23,42 @@ function bubbleSortAlt(arr){
             }
         
         }
-        console.log("one pass done!")
+        //console.log("one pass done!")
         if(swaps === 0) break;
     }
     return arr;
 }
 
-//console.log(bubbleSort([8,4,6,2,7]))
-// console.log(bubbleSort([8,1,2,3,4,5]))
-//console.log(bubbleSort([8,4,6,2,1,34,56,25]))
+
+function bubbleSort(arr){
+    let endIndex = arr.length - 1;
+
+    while(endIndex >= 0){
+        
+        let swaps = 0;
+        let currentIndex = 0;
+        
+        while(currentIndex < endIndex){
+            // console.log(arr, arr[currentIndex], arr[currentIndex + 1])
+            if(arr[currentIndex] > arr[currentIndex + 1]){
+
+                swap(arr, currentIndex, currentIndex + 1);
+                swaps++;
+            }
+            currentIndex++;
+        }
+        
+        if(swaps === 0) break;
+        endIndex--;
+
+    }
+
+    return arr;
+}
+
+console.log(bubbleSort([8,4,6,2,7]))
+console.log(bubbleSort([8,1,2,3,4,5]))
+console.log(bubbleSort([8,4,6,2,1,34,56,25]))
 
 function selectionSort(arr){
     let smallest = 0;
@@ -118,5 +146,5 @@ function insertionSort(arr){
 }
 
 
-console.log(insertionSort([3, 5, 4, 2, 1]))
-console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
+// console.log(insertionSort([3, 5, 4, 2, 1]))
+// console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
