@@ -1,6 +1,4 @@
 arr1 = [8,4,6,2,7]
-require 'pry'
-
 def swap(arr, index1, index2)
     temp = arr[index1]
     arr[index1] = arr[index2]
@@ -57,5 +55,40 @@ def selection_sort(arr)
     return arr
 end
 
-print selection_sort(arr1)
+#print selection_sort(arr1)
+
+def insertion_sort(arr)
+    
+    beginning_index = 0
+    current_index = 1
+
+    while(current_index < arr.length) do
+
+        while(current_index > 0) do
+            current_value = arr[current_index]
+            
+            print current_value, arr
+
+            if(current_value <= arr[current_index - 1])
+                swap(arr, current_index, current_index - 1)
+                current_index -=1
+            else 
+
+                break
+
+            end
+            
+            
+        end
+
+        beginning_index +=1
+        current_index = beginning_index + 1
+        
+    end
+    
+    return arr
+    
+end
+
+# print insertion_sort(arr1)
 

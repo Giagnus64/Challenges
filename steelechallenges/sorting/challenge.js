@@ -120,12 +120,12 @@ function insertionSortAlt(arr){
 }
 
 function insertionSort(arr){
-    let beginningIndex = 1;
-    let currentIndex = 2;
+    let beginningIndex = 0;
+    let currentIndex = 1;
 
     while(currentIndex < arr.length){
         
-        while(currentIndex >= 0){
+        while(currentIndex > 0){
             currentVal = arr[currentIndex];
             
             if(currentVal <= arr[currentIndex - 1]){
@@ -134,7 +134,7 @@ function insertionSort(arr){
             } else{
                 break;
             }
-        
+            
         }
         beginningIndex++;
 
@@ -146,5 +146,5 @@ function insertionSort(arr){
 }
 
 
-console.log(insertionSort([3, 5, 4, 2, 1]))
-console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
+// console.log(insertionSort([8, 5, 4, 2, 1]))
+// console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
