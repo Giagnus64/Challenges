@@ -33,7 +33,7 @@ function bubbleSortAlt(arr){
 function bubbleSort(arr){
     let endIndex = arr.length - 1;
 
-    while(endIndex >= 0){
+    while(endIndex > 0){
         
         let swaps = 0;
         let currentIndex = 0;
@@ -61,28 +61,28 @@ console.log(bubbleSort([8,1,2,3,4,5]))
 console.log(bubbleSort([8,4,6,2,1,34,56,25]))
 
 function selectionSort(arr){
-    let smallest = 0;
-    let current = 1;
-    let beginning = 0;
+    let smallestIndex = 0;
+    let currentIndex = 1;
+    let beginningIndex = 0;
     
-    while(beginning < arr.length){
+    while(beginningIndex < arr.length){
        
-        while(current < arr.length){
+        while(currentIndex < arr.length){
 
-            if(arr[smallest] > arr[current]){
-                smallest = current;
+            if(arr[smallestIndex] > arr[currentIndex]){
+                smallestIndex = currentIndex;
             } 
-            current++;
+            currentIndex++;
 
         }
 
-        if(smallest !== beginning){
-            swap(arr, smallest, beginning)
+        if(smallestIndex !== beginningIndex){
+            swap(arr, smallestIndex, beginningIndex)
         }
 
-        beginning++;
-        current = beginning + 1;
-        smallest = beginning;
+        beginningIndex++;
+        currentIndex = beginningIndex + 1;
+        smallestIndex = beginningIndex;
     }
     return arr;
 }
