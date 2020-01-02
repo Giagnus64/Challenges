@@ -56,9 +56,9 @@ function bubbleSort(arr){
     return arr;
 }
 
-console.log(bubbleSort([8,4,6,2,7]))
-console.log(bubbleSort([8,1,2,3,4,5]))
-console.log(bubbleSort([8,4,6,2,1,34,56,25]))
+// console.log(bubbleSort([8,4,6,2,7]))
+// console.log(bubbleSort([8,1,2,3,4,5]))
+// console.log(bubbleSort([8,4,6,2,1,34,56,25]))
 
 function selectionSort(arr){
     let smallestIndex = 0;
@@ -123,7 +123,7 @@ function insertionSort(arr){
     let beginningIndex = 1;
     let currentIndex = 2;
 
-    while(beginningIndex < arr.length && currentIndex < arr.length){
+    while(currentIndex < arr.length){
         
         while(currentIndex >= 0){
             currentVal = arr[currentIndex];
@@ -146,5 +146,5 @@ function insertionSort(arr){
 }
 
 
-// console.log(insertionSort([3, 5, 4, 2, 1]))
-// console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
+console.log(insertionSort([3, 5, 4, 2, 1]))
+console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
