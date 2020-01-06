@@ -4,6 +4,7 @@ function swap (arr, index1, index2){
     let temp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = temp;
+    return arr;
 }
 
 // i starts at the end of the array and is the "gatekeeper" for the last comparison, so we dont compare undefined
@@ -148,3 +149,5 @@ function insertionSort(arr){
 
 // console.log(insertionSort([8, 5, 4, 2, 1]))
 // console.log(insertionSort([3,5,6,2,4,5,3,5,4]))
+
+module.exports = {insertionSort, bubbleSort, selectionSort, swap}
