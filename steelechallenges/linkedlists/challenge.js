@@ -44,7 +44,7 @@ class DoublyLinkedList{
             this.tail.prev = null;
             //in case of 1 length list
         } else {
-            //mkre sure to edit head in case newTail is null
+            //make sure to edit head in case newTail is null
             this.head = null;
         }
         //assign new tail (could be null)
@@ -56,10 +56,27 @@ class DoublyLinkedList{
     }
 
     shift(){
-
+        //in case list is empty
+        if(!this.head){
+            return false;
+        }
+        //save shifted node to variable
+        const shiftedNode = this.head;
+        //make the new head the next (might be null)
+        const newHead = this.head.next; //might be null
+        //if list is more than 1
+        if(this.head !== this.tail){
+            newHead.prev = null;
+            shiftedNode.next = null;
+        }else{
+            this.tail = null;
+        }
+        this.head = newHead;
+        this.length--;
+        return shiftedNode;
     }
 
-    unshift(){
+    unshift(val){
 
     }
 
@@ -77,8 +94,9 @@ class DoublyLinkedList{
 let list = new DoublyLinkedList()
 //console.log(list);
 list.push(1);
-console.log(list.pop())
-console.log(list);
-// list.push(2);
+// console.log(list.pop())
 // console.log(list);
+list.push(2);
+console.log(list.shift());
+console.log(list);
 // list.push(3);
