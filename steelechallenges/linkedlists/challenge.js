@@ -86,7 +86,7 @@ class DoublyLinkedList {
         newNode.next = this.head;
         this.head = newNode;
       }
-      
+      this.length++;
       return this
   }
 
@@ -116,11 +116,25 @@ class DoublyLinkedList {
 
   removeAtIndex() {}
 
-  getIndex() {}
+  getIndex(val) {
+      let currentIndex = 0;
+      let currentNode = this.head;
+      while (currentNode.value!== val) {
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+      return currentIndex;
+  }
 
   setIndex() {}
 
-  search() {}
+  search(val) {
+      let currentNode = this.head;
+      while (currentNode.value !== val) {
+        currentNode = currentNode.next;
+      }
+      return currentNode;
+  }
 }
 
 let list = new DoublyLinkedList()
@@ -129,7 +143,6 @@ list.push(1);
 // console.log(list.pop())
 // console.log(list);
 list.push(2);
-console.log(list.unshift(0))
-console.log(list.shift());
-console.log(list);
+list.push(3);
+console.log(list.getIndex(2));
 // list.push(3);
