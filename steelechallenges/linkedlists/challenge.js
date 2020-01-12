@@ -91,30 +91,61 @@ class DoublyLinkedList {
   }
 
   insertAtIndex(index, val) {
+    //if index doesn't exist
+    if(index >= this.length){
+        return false
+    }
     if (index == 0) {
       this.unshift(val);
     } else if (index == this.length - 1) {
       this.push(val);
     } else {
       const newNode = new Node(val);
-      let currentIndex = 0;
-      let currentNode = this.head;
-      while (currentIndex !== index) {
-        currentNode = currentNode.next;
-        currentIndex++;
-      }
-      const before = currentNode.prev;
-      const after = currentNode;
+      const after = this.accessAtIndex(index);
+      const before = after.prev;
       after.prev = newNode;
-      newNode.next = currentIndex;
       before.next = newNode;
+      newNode.next = after;
       newNode.prev = before;
       this.length++;
     }
     return this;
   }
 
-  removeAtIndex() {}
+  removeAtIndex(index) {
+    let removedNode;
+    if(index >= this.length){
+        return false
+    }
+    if (index == 0) {
+        removedNode = this.shift();
+    } else if (index == this.length - 1) {
+        removedNode = this.pop();
+    } else {
+        removedNode = this.accessAtIndex(index)
+        const after = removedNode.next;
+        const before = removedNode.prev;
+        removedNode.next = null;
+        removedNode.prev = null;
+        before.next = after;
+        after.prev = before;
+        this.length--;
+    }
+    return removedNode;
+  }
+
+  accessAtIndex(index){
+      if (index >= this.length) {
+        return false;
+      }
+      let currentIndex = 0;
+      let currentNode = this.head;
+      while (currentIndex !== index) {
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+      return currentNode
+  }
 
   getIndex(val) {
       let currentIndex = 0;
@@ -144,5 +175,6 @@ list.push(1);
 // console.log(list);
 list.push(2);
 list.push(3);
-console.log(list.getIndex(2));
+// console.log(list.removeAtIndex(1));
 // list.push(3);
+console.log(list.accessAtIndex(1));
