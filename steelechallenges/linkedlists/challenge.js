@@ -177,4 +177,4 @@ list.push(2);
 list.push(3);
 // console.log(list.removeAtIndex(1));
 // list.push(3);
-console.log(list.accessAtIndex(1));
+//console.log(list.accessatIndex(1));
