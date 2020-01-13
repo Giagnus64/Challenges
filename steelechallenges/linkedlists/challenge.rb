@@ -45,6 +45,7 @@ class DoublyLinkedList
         }"
     end
 
+    # push onto end of list
     def push(val)
        newNode = Node.new(val)
        if(self.length == 0)
@@ -58,13 +59,35 @@ class DoublyLinkedList
        self.length +=1
        return self
     end
-    
+
+    # remove last node in list
+    def pop
+        if(self.length == 0)
+            return false
+        end
+        popped_node = self.tail
+        new_tail = self.tail.prev
+        if(new_tail)
+            popped_node.prev = nil
+            new_tail.next = nil
+        else 
+            self.head = nil
+        end
+        self.tail = new_tail
+        self.length -=1
+        return popped_node
+    end
+
+    def shift
+        
+    end
 end
 
 list = DoublyLinkedList.new()
 list.push(0)
 list.push(1)
 list.push(2)
+list.pop
 list.pretty_print_list
 
 
