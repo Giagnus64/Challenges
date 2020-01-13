@@ -16,7 +16,7 @@ class DoublyLinkedList
       @length = 0
     end
 
-    def print_list
+    def pretty_print_list
         if self.length == 0
             puts "empty"
         else 
@@ -29,7 +29,7 @@ class DoublyLinkedList
         end
     end
     
-    def pretty_print_list
+    def pretty_print_list_details
         puts "List {
             length: #{self.length}
             head: #{self.head ? self.head.value : "none"}
@@ -78,17 +78,31 @@ class DoublyLinkedList
         return popped_node
     end
 
-    def shift
-        
+    def unshift(val)
+        new_node = Node.new(val)
+
+        if(self.length == 0)
+            self.tail = new_node
+        else
+            self.head.prev = new_node
+            new_node.next = self.head
+        end
+        self.head = new_node
+        self.length +=1
+
+        pretty_print_node(new_node)
+        return self
     end
 end
 
 list = DoublyLinkedList.new()
-list.push(0)
 list.push(1)
 list.push(2)
-list.pop
+list.push(3)
+list.unshift(0)
 list.pretty_print_list
+#list.pretty_print_list_details
+
 
 
 
