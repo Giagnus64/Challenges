@@ -68,11 +68,11 @@ class DoublyLinkedList
         popped_node = self.tail
         new_tail = self.tail.prev
         if(new_tail)
-            popped_node.prev = nil
             new_tail.next = nil
         else 
             self.head = nil
         end
+        popped_node.prev = nil
         self.tail = new_tail
         self.length -=1
         return popped_node
@@ -93,15 +93,36 @@ class DoublyLinkedList
         pretty_print_node(new_node)
         return self
     end
+
+    def shift
+        if(self.length == 0)
+            return false
+        end
+        shifted_node = self.head
+        new_head = shifted_node.next
+        if(new_head)
+            new_head.prev = nil 
+        else 
+            self.tail = nil
+        end
+        shifted_node.next = nil
+        self.head = new_head
+        self.length -= 1
+
+        pretty_print_node(shifted_node)
+        return shifted_node
+        
+    end
+    
 end
 
 list = DoublyLinkedList.new()
 list.push(1)
 list.push(2)
 list.push(3)
-list.unshift(0)
+list.shift
 list.pretty_print_list
-#list.pretty_print_list_details
+list.pretty_print_list_details
 
 
 
