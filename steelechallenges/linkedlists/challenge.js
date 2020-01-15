@@ -92,12 +92,12 @@ class DoublyLinkedList {
 
   insertAtIndex(index, val) {
     //if index doesn't exist
-    if(index >= this.length){
+    if(index > this.length){
         return false
     }
-    if (index == 0) {
+    if (index === 0) {
       this.unshift(val);
-    } else if (index == this.length - 1) {
+    } else if (index === this.length) {
       this.push(val);
     } else {
       const newNode = new Node(val);

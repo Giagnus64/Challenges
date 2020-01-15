@@ -77,7 +77,7 @@ class DoublyLinkedList
         self.length -=1
         return popped_node
     end
-
+    # add to front of list
     def unshift(val)
         new_node = Node.new(val)
 
@@ -94,6 +94,7 @@ class DoublyLinkedList
         return self
     end
 
+    # take off first node of list
     def shift
         if(self.length == 0)
             return false
@@ -111,8 +112,40 @@ class DoublyLinkedList
 
         pretty_print_node(shifted_node)
         return shifted_node
-        
     end
+
+    def insert_at_index(index, val)
+        if(index > self.length)
+            return false
+        end
+        if(index == 0)
+            self.push(val)
+        elsif(index == self.length)
+            self.push(val)
+        end
+    end
+
+#     insertAtIndex(index, val) {
+#     //if index doesn't exist
+#     if(index > this.length){
+#         return false
+#     }
+#     if (index == 0) {
+#       this.unshift(val);
+#     } else if (index == this.length - 1) {
+#       this.push(val);
+#     } else {
+#       const newNode = new Node(val);
+#       const after = this.accessAtIndex(index);
+#       const before = after.prev;
+#       after.prev = newNode;
+#       before.next = newNode;
+#       newNode.next = after;
+#       newNode.prev = before;
+#       this.length++;
+#     }
+#     return this;
+#   }
     
 end
 
