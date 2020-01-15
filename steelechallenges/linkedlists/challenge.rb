@@ -122,7 +122,7 @@ class DoublyLinkedList
             self.push(val)
         elsif(index == self.length)
             self.push(val)
-        end
+        
     end
 
 #     insertAtIndex(index, val) {
