@@ -90,7 +90,7 @@ class DoublyLinkedList
         self.head = new_node
         self.length +=1
 
-        pretty_print_node(new_node)
+        #pretty_print_node(new_node)
         return self
     end
 
@@ -110,19 +110,40 @@ class DoublyLinkedList
         self.head = new_head
         self.length -= 1
 
-        pretty_print_node(shifted_node)
+        #pretty_print_node(shifted_node)
         return shifted_node
     end
 
     def insert_at_index(index, val)
+        #return false if index doesnt exist
         if(index > self.length)
             return false
         end
+        #handle edge cases
         if(index == 0)
-            self.push(val)
+            self.unshift(val)
         elsif(index == self.length)
             self.push(val)
-        
+        else
+            new_node = Node.new(val)
+            current_node = self.head.next
+            current_index = 1
+
+            while(current_index != index)
+                current_node = current_node.next
+                current_index += 1
+            end
+
+            before = current_node.prev
+            after = current_node
+            before.next = new_node
+            after.prev = new_node
+            new_node.next = after
+            new_node.prev = before
+            self.length += 1
+        end
+
+        return self
     end
 
 #     insertAtIndex(index, val) {
@@ -150,10 +171,15 @@ class DoublyLinkedList
 end
 
 list = DoublyLinkedList.new()
-list.push(1)
-list.push(2)
-list.push(3)
-list.shift
+list.push("b")
+list.push("c")
+list.push("e")
+list.insert_at_index(0, "a")
+list.insert_at_index(3, "d")
+list.insert_at_index(5, "f")
+puts list.insert_at_index(8, "foo")
+
+
 list.pretty_print_list
 list.pretty_print_list_details
 
