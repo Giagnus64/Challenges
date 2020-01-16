@@ -154,14 +154,14 @@ function insertionSort(arr){
 
 // module.exports = {insertionSort, swap}
 
-//merge sort
-//start with merging array function
+// merge sort
+// start with merging array function
 const merge = (arr1, arr2) => {
-    const sortedArray = [];
+    let sortedArray = [];
     let firstPointer = 0;
     let secondPointer = 0;
-    while (firstPointer < arr1.length || secondPointer < arr2.length){
-        if(arr1[firstPointer] < arr2[secondPointer]){
+    while (firstPointer < arr1.length && secondPointer < arr2.length){
+        if(arr2[secondPointer] >= arr1[firstPointer]){
             sortedArray.push(arr1[firstPointer])
             firstPointer++;
         } else{
@@ -169,38 +169,30 @@ const merge = (arr1, arr2) => {
             secondPointer++;
         } 
     }
-    if (firstPointer = arr1.length) {
-    sortedArray.concat(arr2.slice(secondPointer))
-    } else {
-    sortedArray.concat(arr1.slice(firstPointer))
+    while(firstPointer < arr1.length) {
+        sortedArray.push(arr1[firstPointer]);
+        firstPointer++;
+    } 
+    while(secondPointer < arr2.length) {
+        sortedArray.push(arr2[secondPointer])
+        secondPointer++;
     }
     return sortedArray
 }
 
-//console.log(merge([1,2,5], [4,6,8]))
-
-// const breakArray = (arr) => {
-//     if(arr.length <= 1){
-//         return arr
-//     } else{
-//         const arr1 = arr.slice(arr.length/2)
-//         const arr2 = arr.slice(0, arr.length/2) 
-//         masterArray.push(breakArray(arr1))
-//         masterArray.push(breakArray(arr2))
-//     }
-// }
 
 const mergeSort = (arr) => {
 
-    if (arr.length <= 1) return arr
+    if (arr.length <= 1) return arr;
     
     let midpoint = Math.floor(arr.length/2);
     
-    const arr1 = mergeSort(arr.slice(0, midpoint))
+    let arr1 = mergeSort(arr.slice(0, midpoint))
     
-    const arr2 = mergeSort(arr.slice(midpoint))
+    let arr2 = mergeSort(arr.slice(midpoint))
     
     return merge(arr1, arr2)
 }
 
-console.log(mergeSort([4,1,5,92,45,7]))
+console.log(mergeSort([4,1,5]))
+
