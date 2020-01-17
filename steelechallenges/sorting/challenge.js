@@ -196,3 +196,5 @@ const mergeSort = (arr) => {
 
 console.log(mergeSort([4,1,5]))
 
+
+//Quick Sort

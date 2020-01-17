@@ -6,6 +6,142 @@ class Node {
     }
 }
 
+// linkedlist class
+class LinkedList {
+  constructor(length) {
+    this.head = null;
+    this.length = length;
+  }
+
+  //adds an element at the end of the list
+  push(val) {
+    const newNode = new Node(val);
+
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+
+    this.size++;
+  }
+
+
+  insertAt(val, index) {
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+    const newNode = new Node(element);
+    let counter = 0;
+    let current = this.head;
+
+    if (location === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      while (counter + 1 !== location) {
+        current = current.next;
+        counter++;
+      }
+      newNode.next = current.next;
+      current.next = newNode;
+    }
+    this.size++;
+    return newNode;
+  }
+  // removeFrom(location)
+  removeFrom(location) {
+    //location is an INDEX, starting from 0
+    let counter = 0;
+    let current = this.head;
+    if (location === 0) {
+      this.head = this.head.next;
+    } else {
+      while (counter + 1 !== location) {
+        current = current.next;
+        counter++;
+        console.log(current);
+      }
+      current.next = current.next.next;
+    }
+    this.size--;
+  }
+  // removeElement(element)
+  removeElement = element => {
+    let current = this.head;
+    if (current.element === element) {
+      this.head = current.next;
+    } else {
+      while (current.next.element !== element) {
+        current = current.next;
+        counter++;
+      }
+      current.next = current.next.next;
+    }
+    this.size--;
+  };
+
+  returnKthToLast(number) {
+    if (number > this.size) {
+      return false;
+    }
+    const nodeNum = this.size - number;
+    let counter = 0;
+    let current = this.head;
+    while (nodeNum !== counter) {
+      current = current.next;
+      counter++;
+      //console.log(current)
+    }
+    return current;
+  }
+  // removeDupsNoBuffer = () => {
+  //     let current = this.head;
+  //     let searcher = this.head;
+  //     while (current.next) {
+  //         //console.log('curr:', current, 'searcher:', searcher);
+  //         if (current.element === searcher.next.element) {
+  //             searcher.next = searcher.next.next
+
+  //         }
+  //         searcher = searcher.next
+  //         if (searcher === null || searcher.next === null) {
+  //             current = current.next
+  //             searcher = current.next;
+  //             //console.log(current);
+  //         }
+  //     }
+  // }
+  //helpers
+  isEmpty() {
+    if (this.size > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  sizeOf() {
+    return this.size;
+  }
+
+  printList() {
+    let current = this.head;
+    while (current.next) {
+      console.log(current);
+      current = current.next;
+    }
+    console.log(current);
+  }
+} 
+
+
+
+
+//DOUBLY LINKED
 class DoublyLinkedList {
   constructor() {
     this.head = null;
