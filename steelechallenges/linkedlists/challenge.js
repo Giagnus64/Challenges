@@ -7,27 +7,43 @@ class Node {
 }
 
 // linkedlist class
-class LinkedList {
-  constructor(length) {
+class SinglyLinkedList {
+  constructor() {
     this.head = null;
-    this.length = length;
+    this.tail = null;
+    this.length = 0;
   }
 
-  //adds an element at the end of the list
+  //adds an val at the end of the list
   push(val) {
     const newNode = new Node(val);
 
-    if (!this.head) {
+    if (this.length === 0) {
       this.head = newNode;
+      this.tail = newNode;
     } else {
-      let current = this.head;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = newNode;
+      this.tail.next = newNode;
+      this.tail = newNode
     }
 
-    this.size++;
+    this.length++;
+
+    return this
+  }
+  pop() {
+      if(!this.tail){
+          return false
+      }
+      poppedNode = this.tail;
+      if(this.head !== this.tail){
+        const newTail = this.findAtIndex(this.length - 1);
+        newTail.next === null;
+        this.tail = newTail;
+      } else {
+        this.head = null;
+      }
+      
+      return poppedNode
   }
 
 
@@ -35,7 +51,7 @@ class LinkedList {
     if (index < 0 || index > this.length) {
       return false;
     }
-    const newNode = new Node(element);
+    const newNode = new Node(val);
     let counter = 0;
     let current = this.head;
 
@@ -50,7 +66,7 @@ class LinkedList {
       newNode.next = current.next;
       current.next = newNode;
     }
-    this.size++;
+    this.length++;
     return newNode;
   }
   // removeFrom(location)
@@ -68,28 +84,28 @@ class LinkedList {
       }
       current.next = current.next.next;
     }
-    this.size--;
+    this.length--;
   }
-  // removeElement(element)
-  removeElement = element => {
+  // removeval(val)
+  removeVal(val){
     let current = this.head;
-    if (current.element === element) {
+    if (current.val === val) {
       this.head = current.next;
     } else {
-      while (current.next.element !== element) {
+      while (current.next.val !== val) {
         current = current.next;
         counter++;
       }
       current.next = current.next.next;
     }
-    this.size--;
+    this.length--;
   };
 
   returnKthToLast(number) {
-    if (number > this.size) {
+    if (number > this.length) {
       return false;
     }
-    const nodeNum = this.size - number;
+    const nodeNum = this.length - number;
     let counter = 0;
     let current = this.head;
     while (nodeNum !== counter) {
@@ -99,33 +115,28 @@ class LinkedList {
     }
     return current;
   }
-  // removeDupsNoBuffer = () => {
-  //     let current = this.head;
-  //     let searcher = this.head;
-  //     while (current.next) {
-  //         //console.log('curr:', current, 'searcher:', searcher);
-  //         if (current.element === searcher.next.element) {
-  //             searcher.next = searcher.next.next
 
-  //         }
-  //         searcher = searcher.next
-  //         if (searcher === null || searcher.next === null) {
-  //             current = current.next
-  //             searcher = current.next;
-  //             //console.log(current);
-  //         }
-  //     }
-  // }
   //helpers
   isEmpty() {
-    if (this.size > 0) {
+    if (this.length > 0) {
       return false;
     }
     return true;
   }
 
-  sizeOf() {
-    return this.size;
+  lengthOf() {
+    return this.length;
+  }
+
+  findAtIndex(index){
+      if(index >= this.length) return false;
+      let currentNode = this.head
+      let currentIndex = 0;
+      while(currentindex !== index){
+          currentNode = currentNode.next
+          currentIndex++;
+      }
+      return currentNode
   }
 
   printList() {
@@ -304,13 +315,15 @@ class DoublyLinkedList {
   }
 }
 
-let list = new DoublyLinkedList()
+let list = new SinglyLinkedList()
 //console.log(list);
 list.push(1);
 // console.log(list.pop())
 // console.log(list);
 list.push(2);
 list.push(3);
+console.log(list.pop());
+console.log(list);
 // console.log(list.removeAtIndex(1));
 // list.push(3);
 //console.log(list.accessatIndex(1));
