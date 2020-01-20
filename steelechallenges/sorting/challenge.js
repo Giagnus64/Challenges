@@ -233,7 +233,7 @@ const quickSort = (arr, left = 0, right = arr.length - 1) => {
     }
     return arr;
 }
-console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18]));
+//console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18]));
 
 //ONLY WORKS FOR BASE 10
 const getDigit = (num, place) => {
@@ -272,3 +272,29 @@ const mostDigits = (nums) => {
     }
     return maxDigits
 }
+const radixSort = (nums) => {
+    //get the max digits for the list
+    let maxDigits = mostDigits(nums);
+
+    const sortedList = [];
+    //iterate from 0 to number of max digits
+    //digit place iterator
+    for(let i = 0; i < maxDigits; i++){
+        // make out digit buckets but crafting an array with 10 arrays inside it
+        //const bucketContainer = [[],[],[],[],[],[],[],[],[],[]]
+        let digitBuckets = Array.from({length:10}, () => [])
+        //iterate over our numbers and place them into the proper bucket using helper functions
+        for(let j = 0; j < nums.length; j++){
+            //get the digit at the current digit iterator place
+            let digitized = getDigit(nums[j], i)
+            //place into the proper bucket based on digit
+            digitBuckets[digitized].push(nums[j])
+        }
+        //reassign nums to a new array from the spreading of the digit buckets array (like flattening the arrays)
+        nums = [].concat(...digitBuckets)
+    }
+    return nums;
+}
+
+//console.log(radixSort([23,456,56,1,3,7654,6789,432345,24,45,2,5,6]));
+
