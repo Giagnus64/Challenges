@@ -156,11 +156,15 @@ function insertionSort(arr){
 
 // merge sort
 // start with merging array function
+//ASSUMES THE ARRAYS ARE SORTED*****
 const merge = (arr1, arr2) => {
+    //establish a final sorted array to sort the elements, and a pointer for each array
     let sortedArray = [];
     let firstPointer = 0;
     let secondPointer = 0;
-    while (firstPointer < arr1.length && secondPointer < arr2.length){
+    //while the first pointer and the second pointer have not reached the end of their respective arrays
+    while (firstPointer <  arr1.length && secondPointer < arr2.length){
+        //add lesser number to array, and move pointer
         if(arr2[secondPointer] >= arr1[firstPointer]){
             sortedArray.push(arr1[firstPointer])
             firstPointer++;
@@ -169,6 +173,7 @@ const merge = (arr1, arr2) => {
             secondPointer++;
         } 
     }
+    //after arrays have been exhausted, add the rest of the numbers from whatever array's pointer has not reached gone through the array
     while(firstPointer < arr1.length) {
         sortedArray.push(arr1[firstPointer]);
         firstPointer++;
@@ -194,7 +199,7 @@ const mergeSort = (arr) => {
     return merge(arr1, arr2)
 }
 
-console.log(mergeSort([4,1,5]))
+console.log(mergeSort([4,1,5,2,7]))
 
 
 //Quick Sort
