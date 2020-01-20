@@ -199,21 +199,34 @@ const mergeSort = (arr) => {
     return merge(arr1, arr2)
 }
 
-console.log(mergeSort([4,1,5,2,7]))
+//console.log(mergeSort([4,1,5,2,7]))
 
 
 //Quick Sort
 const pivot = (arr, startIndex = 0, endIndex = arr.length - 1) => {
-    let pivotNum = arr[0]
-    let pivotIndex = 0;
-    while(startIndex <= endIndex){
-        if(pivotNum > arr[startIndex]){
+    //pick a pivot number (In this case, the 1st number in array)
+    let pivotNum = arr[startIndex]
+    //keep track of index where pivot is swapped to
+    let pivotIndex = startIndex;
+    //iterate through the numbers and if the pivot number is greater, swap the current number and the number at the pivot index, and increase the pivot index by one
+    for(let i = startIndex + 1; i < arr.length; i++) {
+        if(pivotNum > arr[i]){
             pivotIndex++;
-            swap(arr, startIndex, pivotIndex) 
+            swap(arr, i, pivotIndex) 
         }
-        startIndex++; 
     }
-    return swap(arr, pivotIndex, 0)
+    //finally, swap the pivot number with the pivotIndex
+    swap(arr, pivotIndex, startIndex)
+    return pivotIndex;
 }
 
-console.log(pivot([28,41,4,11,16,1,40,14,36,37,42,18]))
+
+const quickSort = (arr, left = 0, right = arr.length - 1) => {
+    if(left < right){
+        let pivotIndex = pivot(arr, left, right);
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    }
+    return arr;
+}
+console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18]));
