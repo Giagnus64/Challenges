@@ -222,11 +222,53 @@ const pivot = (arr, startIndex = 0, endIndex = arr.length - 1) => {
 
 
 const quickSort = (arr, left = 0, right = arr.length - 1) => {
+    //if the array is 1 item or less
     if(left < right){
+        //get the pivot index
         let pivotIndex = pivot(arr, left, right);
+        //pass in the sort for the left side of the pivot
         quickSort(arr, left, pivotIndex - 1);
+        //pass in the sort for the right side of the pivot
         quickSort(arr, pivotIndex + 1, right);
     }
     return arr;
 }
 console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18]));
+
+//ONLY WORKS FOR BASE 10
+const getDigit = (num, place) => {
+    //move the decimal point over to the requested digit (absolute value tp consider negative numbers)
+    const divided = Math.abs(num) / Math.pow(10, place);
+    //round down to eliminate digits after the decimal
+    const floored = Math.floor(divided);
+    //modulo to get remainder when number is divided by it's base (10)
+    const digit = floored % 10;
+
+    return digit
+    //return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+}
+
+//get digit count
+const digitCount = (num) => {
+    //special case to ignore running log10 on 0
+    if(num === 0) return 1;
+    //since we are in base 10, how many times does 10 need to be multipled to get the passed in number?
+    const power = Math.log10(Math.abs(num))
+    //floor it to get rid of the nums after the decimal
+    const floored = Math.floor(power)
+    //add 1 digit to account for nums after the decimal
+    return floored + 1
+    //return Math.floor(Math.log10(Math.abs(num))) + 1
+}
+
+//get max number of digits to account for in list
+const mostDigits = (nums) => {
+    //set a variable for max digits
+    let maxDigits = 0;
+    // iterate over list
+    for(let i = 0; i < nums.length; i++){
+        //get maximum of current max digits and digitcount of current itreration of list
+        maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+    }
+    return maxDigits
+}
