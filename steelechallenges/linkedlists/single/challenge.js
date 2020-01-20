@@ -195,8 +195,12 @@ class SinglyLinkedList {
 }
 
 let list = new SinglyLinkedList();
-// list.push("a");
-// list.push("b");
+list.push("a");
+list.push("b");
+list.push("c");
+list.shift()
+console.log(list)
+//list.printList();
 // list.push("c");
 // list.push("d");
 
@@ -205,4 +209,4 @@ let list = new SinglyLinkedList();
 // console.log(list.reverseList());
 // list.printList();
 
-
+function
