@@ -6,7 +6,7 @@ function swap (arr, index1, index2){
     arr[index1] = arr[index2];
     arr[index2] = temp;
     //added for testing purposes
-    //return arr;
+    return arr;
 }
 
 // i starts at the end of the array and is the "gatekeeper" for the last comparison, so we dont compare undefined
@@ -187,15 +187,15 @@ const merge = (arr1, arr2) => {
 
 
 const mergeSort = (arr) => {
-
+    //if array is SORTED(length is 0 or 1), return array
     if (arr.length <= 1) return arr;
-    
+    //find midpoint
     let midpoint = Math.floor(arr.length/2);
-    
+    //split array by midpoint and merge sort the split arrays
     let arr1 = mergeSort(arr.slice(0, midpoint))
     
     let arr2 = mergeSort(arr.slice(midpoint))
-    
+    //return the merged arrays
     return merge(arr1, arr2)
 }
 
@@ -203,3 +203,17 @@ console.log(mergeSort([4,1,5,2,7]))
 
 
 //Quick Sort
+const pivot = (arr, startIndex = 0, endIndex = arr.length - 1) => {
+    let pivotNum = arr[0]
+    let pivotIndex = 0;
+    while(startIndex <= endIndex){
+        if(pivotNum > arr[startIndex]){
+            pivotIndex++;
+            swap(arr, startIndex, pivotIndex) 
+        }
+        startIndex++; 
+    }
+    return swap(arr, pivotIndex, 0)
+}
+
+console.log(pivot([28,41,4,11,16,1,40,14,36,37,42,18]))
