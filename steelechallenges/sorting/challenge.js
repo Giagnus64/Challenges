@@ -276,7 +276,6 @@ const radixSort = (nums) => {
     //get the max digits for the list
     let maxDigits = mostDigits(nums);
 
-    const sortedList = [];
     //iterate from 0 to number of max digits
     //digit place iterator
     for(let i = 0; i < maxDigits; i++){

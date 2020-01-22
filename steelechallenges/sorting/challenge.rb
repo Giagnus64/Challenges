@@ -1,6 +1,6 @@
 arr1 = [2,4,6,8]
 arr2 = [1,2,3,4]
-arr3 = [32,6,7,45,34,24,57]
+arr3 = [32,633,7,45,34,24398,57]
 
 def swap(arr, index1, index2)
     temp = arr[index1]
@@ -155,4 +155,52 @@ def quick_sort(arr, left = 0, right = arr.size - 1)
     end
     return arr
 end
-print quick_sort(arr3)
+#print quick_sort(arr3)
+
+def get_digit(num, place)
+    divided = num.abs / (10**place)
+    floored = divided.floor
+    digit = floored % 10
+end
+
+# print get_digit(743, 1)
+
+
+def digit_count(num)
+    if(num == 0)
+        return 1
+    end
+    power = Math.log(num.abs, 10)
+    floored = power.floor
+    return floored + 1
+end
+# print digit_count(4387)
+
+def most_digits(arr)
+    max_digits = 0
+    i = 0
+    while(i < arr.size)
+        if(digit_count(arr[i]) > max_digits)
+            max_digits = digit_count(arr[i])
+        end
+        i += 1
+    end
+    max_digits
+end
+
+def radix_sort(arr)
+    max_digits = most_digits(arr)
+    for i in 0...max_digits do
+        digit_buckets = [[],[],[],[],[],[],[],[],[],[]]
+        j = 0
+        while(j < arr.size)
+            digitized = get_digit(arr[j], i)
+            digit_buckets[digitized].push(arr[j])
+            j += 1
+        end
+        arr = digit_buckets.flatten
+    end
+    arr
+end
+
+#print radix_sort(arr3)
