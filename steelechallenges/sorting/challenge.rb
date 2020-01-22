@@ -1,6 +1,6 @@
 arr1 = [2,4,6,8]
 arr2 = [1,2,3,4]
-arr3 = [3,6,7,45,34,24,57]
+arr3 = [32,6,7,45,34,24,57]
 
 def swap(arr, index1, index2)
     temp = arr[index1]
@@ -115,6 +115,7 @@ def merge(arr1, arr2)
         sorted_array.push(arr2[second_pointer])
         second_pointer += 1
     end
+   
     return sorted_array
 end
 
@@ -129,55 +130,29 @@ def merge_sort(arr)
     return merge(left, right)
 end
 
-puts merge_sort(arr3)
+#print merge_sort(arr3)
 
-#print merge(arr1, arr2)
+def pivot(arr, start_index = 0, end_index = arr.size - 1) 
+    pivot_number = arr[start_index]
+    pivot_index = start_index
+    for i in (start_index + 1)..end_index do 
+        if(pivot_number > arr[i])
+            pivot_index += 1
+            swap(arr, i, pivot_index)
+        end
+    end
+    swap(arr, start_index, pivot_index)
+    #print arr
+    return pivot_index
+end
+#print pivot(arr3)
 
-# print insertion_sort(arr1)
-
-# // merge sort
-# // start with merging array function
-# //ASSUMES THE ARRAYS ARE SORTED*****
-# const merge = (arr1, arr2) => {
-#     //establish a final sorted array to sort the elements, and a pointer for each array
-#     let sortedArray = [];
-#     let firstPointer = 0;
-#     let secondPointer = 0;
-#     //while the first pointer and the second pointer have not reached the end of their respective arrays
-#     while (firstPointer <  arr1.length && secondPointer < arr2.length){
-#         //add lesser number to array, and move pointer
-#         if(arr2[secondPointer] >= arr1[firstPointer]){
-#             sortedArray.push(arr1[firstPointer])
-#             firstPointer++;
-#         } else{
-#             sortedArray.push(arr2[secondPointer])
-#             secondPointer++;
-#         } 
-#     }
-#     //after arrays have been exhausted, add the rest of the numbers from whatever array's pointer has not reached gone through the array
-#     while(firstPointer < arr1.length) {
-#         sortedArray.push(arr1[firstPointer]);
-#         firstPointer++;
-#     } 
-#     while(secondPointer < arr2.length) {
-#         sortedArray.push(arr2[secondPointer])
-#         secondPointer++;
-#     }
-#     return sortedArray
-# }
-
-
-# const mergeSort = (arr) => {
-#     //if array is SORTED(length is 0 or 1), return array
-#     if (arr.length <= 1) return arr;
-#     //find midpoint
-#     let midpoint = Math.floor(arr.length/2);
-#     //split array by midpoint and merge sort the split arrays
-#     let arr1 = mergeSort(arr.slice(0, midpoint))
-    
-#     let arr2 = mergeSort(arr.slice(midpoint))
-#     //return the merged arrays
-#     return merge(arr1, arr2)
-# }
-
-# //console.log(mergeSort([4,1,5,2,7]))
+def quick_sort(arr, left = 0, right = arr.size - 1)
+    if(left < right)
+        pivot_index = pivot(arr, left, right)
+        quick_sort(arr, left, pivot_index - 1)
+        quick_sort(arr, pivot_index + 1, right)
+    end
+    return arr
+end
+print quick_sort(arr3)
