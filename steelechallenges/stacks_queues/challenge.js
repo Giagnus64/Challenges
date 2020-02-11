@@ -1,6 +1,6 @@
 // //Array implementation of a stack using push/pop
 // //STACK = LAST IN FIRST OUT
- const stack = [];
+const stack = [];
 
 // stack.push({"Willow Rosenberg": "A"});
 // console.log(stack);
@@ -136,7 +136,7 @@ queue.pop();
 //"Data_report.csv"
 console.log(queue);
 //["Picture_of_Biscuit.png"];
-
+*/
 //Array implementation of queue using push and shift
 
 
@@ -161,7 +161,7 @@ queue.shift();
 //"Data_report.csv"
 console.log(queue);
 // ["Picture_of_Biscuit.png"];
-*/
+
 
 class Queue {
     constructor(){
@@ -235,3 +235,5 @@ class Queue {
  printQueue.dequeue();
  //"Data_report.csv"
  printQueue.log()
+
+
