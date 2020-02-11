@@ -60,3 +60,56 @@ const secondOut = stack.shift();
 console.log(stack);
 //[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
 
+//linked list implementation of stack adding and removing to the beginning for constant time
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Stack {
+    constructor(){
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+    }
+
+    push(value){
+        const newNode = new Node(val);
+        //if stack is empty
+        if (!this.first) {
+          this.first = newNode;
+          this.last = newNode;
+          // add current first pointer to new first(new node), and make new node new first
+        } else {
+          newNode.next = this.first;
+          this.first = newNode;
+        }
+        //add 1 to length
+        this.length++;
+
+        return this;
+    }
+    pop(){
+        //if stack is empty return false
+        if (this.length === 0) return false;
+        //get poppednode
+        const poppedNode = this.first;
+        //get new first (could be NULL if stack is length 1)
+        const newFirst = this.first.next;
+        //if newFirst is null, reassign last to newFirst(null)
+        if (!newFirst) {
+            this.last = newFirst;
+        }
+        //assign new first
+        this.first = newFirst;
+        //remove 1 from length
+        this.length--;
+        //return shiftednode
+        return poppedNode;
+        }
+}
+
+
+
