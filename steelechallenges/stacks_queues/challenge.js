@@ -1,6 +1,6 @@
 // //Array implementation of a stack using push/pop
 // //STACK = LAST IN FIRST OUT
-// const stack = [];
+ const stack = [];
 
 // stack.push({"Willow Rosenberg": "A"});
 // console.log(stack);
@@ -30,35 +30,35 @@
 // //[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
 
 //Array implementation of a stack using shift/unshift
-//STACK = LAST IN FIRST OUT
-const stack = [];
+
 
 stack.unshift({"Willow Rosenberg": "A"});
 console.log(stack);
 //[{ "Willow Rosenberg": "A" }]
 
 stack.unshift({"Xander Harris": "C"});
-//[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+//[ { 'Xander Harris': 'C' }, { 'Willow Rosenberg': 'A' } ]
 console.log(stack);
 
 stack.unshift({"Cordelia Chase": "B+"});
 console.log(stack);
-//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
+//[{ 'Cordelia Chase': 'B+' }, { 'Xander Harris': 'C' },  { 'Willow Rosenberg': 'A' }]
 
 stack.unshift({"Buffy Summers": "B"});
 console.log(stack);
-//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" },{ "Buffy Summers": "B" }]
+//[{ "Buffy Summers": "B" }, { 'Cordelia Chase': 'B+' }, { 'Xander Harris': 'C' },  { 'Willow Rosenberg': 'A' }]
 
 //REMOVAL
 const firstOut = stack.shift();
 // { "Buffy Summers": "B" }
 console.log(stack);
-//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
+//[{ 'Cordelia Chase': 'B+' }, { 'Xander Harris': 'C' },  { 'Willow Rosenberg': 'A' }]
 
 const secondOut = stack.shift();
 //{"Cordelia Chase": "B+"}
 console.log(stack);
-//[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+//[ { 'Xander Harris': 'C' }, { 'Willow Rosenberg': 'A' } ]
+
 
 //linked list implementation of stack adding and removing to the beginning for constant time
 class Node {
@@ -111,5 +111,53 @@ class Stack {
         }
 }
 
+//Array implementation of a queue using unshift and pop
+// QUEUE = First In First Out
+
+const queue = [];
+/*
+queue.unshift("Resume.docx");
+console.log(queue);
+//[ 'Resume.docx' ]
+queue.unshift("Data_Report.csv");
+console.log(queue);
+//[ "Data_Report.csv", "Resume.docx" ]
+queue.unshift("Picture_of_Biscuit.png");
+console.log(queue);
+//["Picture_of_Biscuit.png", "Data_Report.csv", "Resume.docx"]
+
+queue.pop();
+//"Resume.docx"
+console.log(queue);
+//["Picture_of_Biscuit.png", "Data_Report.csv"]
+
+queue.pop();
+//"Data_report.csv"
+console.log(queue);
+//["Picture_of_Biscuit.png"];
+
+//Array implementation of queue using push and shift
 
 
+queue.push("Resume.docx");
+console.log(queue);
+//[ 'Resume.docx' ]
+
+queue.push("Data_Report.csv");
+console.log(queue);
+//["Resume.docx", "Data_Report.csv"]
+
+queue.push("Picture_of_Biscuit.png");
+console.log(queue);
+//["Resume.docx", "Data_Report.csv", "Picture_of_Biscuit.png"]
+
+queue.shift();
+//"Resume.docx"
+console.log(queue);
+//["Data_Report.csv","Picture_of_Biscuit.png"]
+
+queue.shift();
+//"Data_report.csv"
+console.log(queue);
+// ["Picture_of_Biscuit.png"];
+*/
