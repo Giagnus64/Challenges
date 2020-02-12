@@ -1,37 +1,38 @@
-// //Array implementation of a stack using push/pop
-// //STACK = LAST IN FIRST OUT
+//Array implementation of a stack using push/pop
+//STACK = LAST IN FIRST OUT
 const stack = [];
+/*
+stack.push({"Willow Rosenberg": "A"});
+console.log(stack);
+//[{ "Willow Rosenberg": "A" }]
 
-// stack.push({"Willow Rosenberg": "A"});
-// console.log(stack);
-// //[{ "Willow Rosenberg": "A" }]
+stack.push({"Xander Harris": "C"});
+//[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+console.log(stack);
 
-// stack.push({"Xander Harris": "C"});
-// //[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
-// console.log(stack);
+stack.push({"Cordelia Chase": "B+"});
+console.log(stack);
+//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
 
-// stack.push({"Cordelia Chase": "B+"});
-// console.log(stack);
-// //[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
+stack.push({"Buffy Summers": "B"});
+console.log(stack);
+//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" },{ "Buffy Summers": "B" }]
 
-// stack.push({"Buffy Summers": "B"});
-// console.log(stack);
-// //[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" },{ "Buffy Summers": "B" }]
+//REMOVAL
+const firstOut = stack.pop();
+// { "Buffy Summers": "B" }
+console.log(stack);
+//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
 
-// //REMOVAL
-// const firstOut = stack.pop();
-// // { "Buffy Summers": "B" }
-// console.log(stack);
-// //[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
-
-// const secondOut = stack.pop();
-// //{"Cordelia Chase": "B+"}
-// console.log(stack);
-// //[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+const secondOut = stack.pop();
+//{"Cordelia Chase": "B+"}
+console.log(stack);
+//[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+*/
 
 //Array implementation of a stack using shift/unshift
-/*
 
+/*
 stack.unshift({"Willow Rosenberg": "A"});
 console.log(stack);
 //[{ "Willow Rosenberg": "A" }]
@@ -109,10 +110,48 @@ class Stack {
         //return shiftednode
         return poppedNode;
         }
+    log(){
+           let currentNode = this.first
+           let i = 0;
+           while(currentNode){
+               console.log(i, currentNode.value)
+               i++;
+               currentNode = currentNode.next
+           }
+        }
 }
 
+const studentStack = new Stack; 
+studentStack.push({"Willow Rosenberg": "A"});
+studentStack.log();
+//[{ "Willow Rosenberg": "A" }]
+
+studentStack.push({"Xander Harris": "C"});
+//[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+studentStack.log();
+
+studentStack.push({"Cordelia Chase": "B+"});
+studentStack.log();
+//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
+
+studentStack.push({"Buffy Summers": "B"});
+studentStack.log();
+//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" },{ "Buffy Summers": "B" }]
+
+
+const firstOut = studentStack.pop();
+// { "Buffy Summers": "B" }
+studentStack.log();
+//[{ "Willow Rosenberg": "A" },{ "Xander Harris": "C" },{ "Cordelia Chase": "B+" }]
+
+const secondOut = studentStack.pop();
+//{"Cordelia Chase": "B+"}
+studentStack.log();
+//[{ "Willow Rosenberg": "A" }, { "Xander Harris": "C" }]
+
+
 //Array implementation of a queue using unshift and pop
-// QUEUE = First In First Out
+
 //NOT ideal
 
 const queue = [];
