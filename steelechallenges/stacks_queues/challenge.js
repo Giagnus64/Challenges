@@ -105,6 +105,8 @@ class Stack {
         }
         //assign new first
         this.first = newFirst;
+        //remove reference to list
+        poppedNode.next = null;
         //remove 1 from size
         this.size--;
         //return shiftednode
@@ -229,7 +231,7 @@ class Queue {
     dequeue(){
          //if queue is empty return false
         if (this.size === 0) return false;
-        //get poppednode
+        //get dequeuedNode
         const dequeuedNode = this.first;
         //get new first (could be NULL if stack is length 1)
         const newFirst = this.first.next;
@@ -239,6 +241,8 @@ class Queue {
         }
         //assign new first
         this.first = newFirst;
+        //remove refernce to list
+        dequeuedNode.next = null;
         //remove 1 from size
         this.size--;
         //return dequeuednode
