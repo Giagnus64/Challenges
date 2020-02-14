@@ -1,9 +1,8 @@
 #stacks and queues
 class Node 
-    attr_accessor :value, :prev, :next
+    attr_accessor :value, :next
     def initialize(value = nil)
         @value = value
-        @prev = nil
         @next = nil
     end
 end
@@ -28,7 +27,7 @@ class Stack
             new_node.next = self.first
             self.first = new_node
         end
-        self.length +=1
+        self.size +=1
 
         #pretty_print_node(new_node)
         return self
@@ -46,14 +45,14 @@ class Stack
         end
         popped_node.next = nil
         self.first = new_first
-        self.length -= 1
+        self.size -= 1
 
         #pretty_print_node(popped_node)
         return popped_node
     end
 
     def pretty_print_list
-        if self.length == 0
+        if self.size == 0
             puts "empty"
         else 
             current_node = self.first
@@ -68,9 +67,33 @@ class Stack
     def pretty_print_node(node)
         puts "Node {
             value: #{node.value}
-            prev: #{node.prev ? node.prev.value : "none"}
             next: #{node.next ? node.next.value : "none"}
         }"
     end
+    def pretty_print_list_details
+        puts "List {
+            length: #{self.size}
+            head: #{self.first ? self.first.value : "none"}
+            tail: #{self.last ? self.last.value : "none"}
+        }"
+    end
+    
 
 end
+
+stack_trial = Stack.new()
+
+stack_trial.push("a")
+stack_trial.pretty_print_list_details
+stack_trial.pretty_print_list()
+
+stack_trial.push("b")
+stack_trial.pretty_print_list_details
+stack_trial.pretty_print_list()
+
+stack_trial.push("c")
+stack_trial.pretty_print_list()
+
+stack_trial.pop()
+stack_trial.pretty_print_list()
+
