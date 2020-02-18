@@ -50,6 +50,37 @@ class BinarySearchTree {
         }
         return this
     }
+    compareAndFind(currentNode, queriedValue){
+        //node has been found
+        if(currentNode.value === queriedValue){
+            return currentNode
+        }
+
+        //if node is greater than current
+        if(queriedValue > currentNode.value){
+            //if there is a node assigned to the right, recursively call with new values and return the value
+            if (currentNode.right){
+                return this.compareAndFind(currentNode.right, queriedValue);
+            } 
+            //we cannot search further, return false
+            return false;
+        //if node is less than current    
+        } else if(queriedValue < currentNode.value){
+            // if there is a node assigned to the left, recursively call with new values and return the value
+            if(currentNode.left){
+                return this.compareAndFind(currentNode.left, queriedValue)
+            }
+            //we cannot search further, return false
+            return false;
+        } 
+    }
+    
+    find(value){
+        if(!this.root){
+            return false
+        }
+        return this.compareAndFind(this.root, value)
+    }
 
     printTree(){
         let currentNode = this.root
@@ -78,7 +109,13 @@ testTree.insert(2);
 testTree.insert(20);
 testTree.insert(4);
 testTree.insert(12);
-testTree.insert(12);
-
 
 testTree.printTree();
+
+console.log(testTree.find(43))
+console.log(testTree.find(20))
+console.log(testTree.find(10))
+console.log(testTree.find(2))
+
+
+
