@@ -10,7 +10,7 @@ class Tree {
         this.root = null;
     }
 
-    traverse(){
+    traverseBFS(){
         //if there is no root, return false
         if(!this.root){
             return false
@@ -36,6 +36,34 @@ class Tree {
         }
         //return values, should be all TreeNodes
         return treeValues;
+    }
+
+    traverseDFS(){
+         //if there is no root, return false
+        if(!this.root){
+            return false
+        }
+        const treeValues = [];
+        let current = this.root;
+        
+        const preOrderHelper = (node) =>{
+            treeValues.push(node.value);
+            if(node.children.length !== 0){
+                node.children.forEach((child) => {preOrderHelper(child)})
+            }
+            return true;
+        }
+        const postOrderHelper = (node) =>{
+            if (node.children.length !== 0) {
+              node.children.forEach(child => {
+                preOrderHelper(child);
+              });
+            }
+            treeValues.push(node.value);
+            return true;
+        }
+        postOrderHelper(current);
+        return treeValues
     }
 
 }
@@ -116,4 +144,5 @@ testTree.root.children[1].children.push(new TreeNode('r'));
 testTree.root.children[1].children.push(new TreeNode('l'));
 testTree.root.children[1].children.push(new TreeNode('d'));
 
-console.log(testTree.traverse());
+//console.log(testTree.traverseBFS());
+console.log(testTree.traverseDFS());
