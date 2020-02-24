@@ -196,9 +196,5 @@ testTree2.root.children[0].children.push(new TreeNode(3));
 testTree2.root.children[0].children.push(new TreeNode(8));
 testTree2.root.children[1].children.push(new TreeNode(20));
 
-<<<<<<< HEAD
-console.log(testTree.traverseBFS());
-=======
 //console.log(testTree.traverseBFS());
 console.log(testTree2.traverseDFS("in"));
->>>>>>> tree_searches
