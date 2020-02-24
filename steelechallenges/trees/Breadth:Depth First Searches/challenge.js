@@ -53,6 +53,7 @@ class Tree {
             }
             return true;
         }
+
         const postOrderHelper = (node) =>{
             if (node.children.length !== 0) {
               node.children.forEach(child => {
@@ -62,7 +63,34 @@ class Tree {
             treeValues.push(node.value);
             return true;
         }
-        postOrderHelper(current);
+
+        const inOrderHelper = (node) =>{
+            if(node.children.length !== 0) {
+                if(node.children.length > 1){
+                    const halfway = Math.floor(node.children.length/2)
+                    for(let i = 0; i < halfway; i++){
+                        inOrderHelper(node.children[i])
+                        //treeValues.push(node.children[i]);
+                    }
+                    treeValues.push(node.value)
+                    for(let i = halfway; i < node.children.length; i++){
+                        inOrderHelper(node.children[i]);
+                        //treeValues.push(node.children[i]);
+                    }
+
+                } else{
+                    node.children.forEach(child => {
+                      inOrderHelper(child);
+                    });
+                    treeValues.push(node.value);
+                }
+            } else{
+                treeValues.push(node.value);
+            }
+            return true;
+        }
+        
+        inOrderHelper(current);
         return treeValues
     }
 
