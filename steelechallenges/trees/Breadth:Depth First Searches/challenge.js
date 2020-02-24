@@ -116,4 +116,4 @@ testTree.root.children[1].children.push(new TreeNode('r'));
 testTree.root.children[1].children.push(new TreeNode('l'));
 testTree.root.children[1].children.push(new TreeNode('d'));
 
-console.log(testTree.traverse());
+console.log(testTree.traverseBFS());
