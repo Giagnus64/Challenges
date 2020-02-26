@@ -194,6 +194,7 @@ testTree2.root.children.push(new TreeNode(6));
 testTree2.root.children.push(new TreeNode(15));
 testTree2.root.children[0].children.push(new TreeNode(3));
 testTree2.root.children[0].children.push(new TreeNode(8));
+testTree2.root.children[0].children.push(new TreeNode(7));
 testTree2.root.children[1].children.push(new TreeNode(20));
 
 //console.log(testTree.traverseBFS());
