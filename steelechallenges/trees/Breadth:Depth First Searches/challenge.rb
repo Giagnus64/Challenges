@@ -89,9 +89,58 @@ class Tree
         if(!self.root)
             return false
         end
-        tree_values = []
+        @tree_values = []
         current = self.root
 
+        def pre_order_helper(node)
+            @tree_values.push(node.value)
+
+            if(node.children.length != 0)
+              node.children.each do |child|
+                pre_order_helper(child)
+              end
+            end
+            return true
+        end
+        
+        def post_order_helper(node)
+            if(node.children.length != 0)
+              node.children.each do |child|
+                post_order_helper(child)
+              end
+            end
+            @tree_values.push(node.value)
+            return true
+        end
+
+        def in_order_helper(node)
+            if(node.children.length != 0)
+              halfway = (node.children.length / 2).floor
+              for i in (0...halfway) do 
+                in_order_helper(node.children[i])
+              end
+
+              @tree_values.push(node.value)
+
+              for i in (halfway...node.children.length) do 
+                in_order_helper(node.children[i])
+              end
+            else
+              @tree_values.push(node.value)
+            end
+            return true
+        end
+
+        case type 
+        when "pre"
+            pre_order_helper(current)
+        when "post"
+            post_order_helper(current)
+        else
+            in_order_helper(current)
+        end
+
+        @tree_values
     end
 end
 
@@ -100,15 +149,27 @@ end
 
 
 test_tree = Tree.new()
-test_tree.root = TreeNode.new("H");
-test_tree.root.children.push(TreeNode.new("e"));
-test_tree.root.children.push(TreeNode.new("l"));
-test_tree.root.children[0].children.push(TreeNode.new("l"));
-test_tree.root.children[0].children.push(TreeNode.new("o"));
-test_tree.root.children[0].children.push(TreeNode.new("W"));
-test_tree.root.children[1].children.push(TreeNode.new("o"));
-test_tree.root.children[1].children.push(TreeNode.new("r"));
-test_tree.root.children[1].children.push(TreeNode.new("l"));
-test_tree.root.children[1].children.push(TreeNode.new("d"));
+test_tree.root = TreeNode.new("H")
+test_tree.root.children.push(TreeNode.new("e"))
+test_tree.root.children.push(TreeNode.new("l"))
+test_tree.root.children[0].children.push(TreeNode.new("l"))
+test_tree.root.children[0].children.push(TreeNode.new("o"))
+test_tree.root.children[0].children.push(TreeNode.new("W"))
+test_tree.root.children[1].children.push(TreeNode.new("o"))
+test_tree.root.children[1].children.push(TreeNode.new("r"))
+test_tree.root.children[1].children.push(TreeNode.new("l"))
+test_tree.root.children[1].children.push(TreeNode.new("d"))
 
-puts test_tree.traverseBFS()
+#puts test_tree.traverseBFS()
+
+test_tree2 = Tree.new()
+test_tree2.root = TreeNode.new(10)
+test_tree2.root.children.push(TreeNode.new(6))
+test_tree2.root.children.push(TreeNode.new(15))
+test_tree2.root.children[0].children.push(TreeNode.new(3))
+test_tree2.root.children[0].children.push(TreeNode.new(8))
+test_tree2.root.children[0].children.push(TreeNode.new(7))
+test_tree2.root.children[1].children.push(TreeNode.new(20))
+
+puts test_tree2.traverseDFS("in")
+
