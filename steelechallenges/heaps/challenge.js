@@ -38,35 +38,46 @@ class MaxBinaryHeap{
         this.bubbleUp();
         return this.values
     }
-
+    //bubble down elements to readjust heap after removing max element
     bubbleDown(){
         let parentIndex = 0;
         const length = this.values.length;
         const element = this.values[0];
+        //loop breaks if no swaps are needed
         while (true){
+            //get indexes of child elements by following formula
             let leftChildIndex = (2 * parentIndex) + 1;
             let rightChildIndex = (2 * parentIndex) + 2;
             let leftChild, rightChild;
             let indexToSwap = null;
+            // if left child exists, and is greater than the element, plan to swap with the left child index
             if(leftChildIndex < length){
                 leftChild = this.values[leftChildIndex]
                 if(leftChild > element){
                     indexToSwap = leftChildIndex;
                 }
             }
+            //if right child exists
             if(rightChildIndex < length){
                 rightChild = this.values[rightChildIndex]
+
                 if(
+                    //if right child is greater than element and there are no plans to swap
                     (rightChild > element && indexToSwap === null) ||
+                    //OR if right child is greater than left child and there ARE plans to swap
                     (rightChild > leftChild && indexToSwap !== null))
                 {
+                    //plan to swap with the right child
                     indexToSwap = rightChildIndex
                 }
             }
+            //if there are no plans to swap, break out of the loop
             if(indexToSwap === null){
                 break;
             } 
+            //swap with planned element
             this.swap(parentIndex, indexToSwap);
+            //starting index is now index that we swapped with
             parentIndex = indexToSwap;
         }  
     }
@@ -76,7 +87,7 @@ class MaxBinaryHeap{
         this.swap(0, this.values.length - 1);
         //pop max value off of values
         let poppedValue = this.values.pop();
-        //re-adjust heap 
+        //re-adjust heap if length is greater than 1
         if(this.values.length > 1){
             this.bubbleDown();
         }
