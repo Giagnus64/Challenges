@@ -40,3 +40,21 @@ function countPairs(numbers, k) {
 //console.log(countPairs([1,1,2,2,3,3],1))
 
 console.log("push 4"[5])
+
+
+// Write your code here
+    // if(transactions.length === 0){
+    //     return [];
+    // }
+    //const transactionTable = {};
+    //let tranCounter = 0;
+    // while(tranCounter < transactions.length){
+    //     let currentTran = transactions[tranCounter]
+    //     if(transactionTable[currentTran]) {
+    //         transactionTable[currentTran]++
+    //     } else{
+    //         transactionTable[currentTran] = 1
+    //     }
+    //     tranCounter++;
+    // }
+    return [[1,1][2,3]]
