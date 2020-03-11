@@ -8,18 +8,27 @@ class MaxBinaryHeap{
         let temp = this.values[index1];
         this.values[index1] = this.values[index2];
         this.values[index2] = temp;
-        //added for testing purposes
         return this.values;
     }
-
+    //helper methods that bubbles up values from end
     bubble(){
+        //get index of inserted element
         let index = this.values.length - 1
-        let parentIndex = Math.floor((index - 1)/2);
-        while(this.values[parentIndex] < this.values[index]){
-            this.swap(index, parentIndex);
-            index = parentIndex;
-            parentIndex = Math.floor((index - 1)/2);
+        //loop while index is not 0 or element no loger needs to bubble
+        while(index > 0){
+            //get parent index via formula
+            let parentIndex = Math.floor((index - 1)/2);
+            //if values is greater than parent, swap the two
+            if(this.values[parentIndex] < this.values[index]){
+                //swap with helper method
+                this.swap(index, parentIndex);
+                //change current index to parent index
+                index = parentIndex;
+            } else{
+                break;
+            }
         }
+        return 0;
     }
 
     insert(value){
