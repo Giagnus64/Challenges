@@ -34,16 +34,60 @@ class Max_Binary_Heap
         return self.values
     end
 
+    def bubble_down()
+        parent_index = 0
+        length = self.values.size
+        element = self.values[0]
+        while(true)
+            left_child_index = (2*parent_index) + 1
+            right_child_index = (2*parent_index) + 2
+            index_to_swap = nil
+            if(left_child_index < length)
+                left_child = self.values[left_child_index]
+                if(left_child > element)
+                    index_to_swap = left_child_index
+                end
+            end
+            if(right_child_index < length)
+                right_child = self.values[right_child_index]
+                if(
+                    (right_child > element && index_to_swap == nil) ||
+                    (right_child > left_child && index_to_swap != nil)
+                  )
+                  index_to_swap = right_child_index
+                end
+            end
+
+            if(index_to_swap == nil)
+                break
+            end
+
+            self.swap(parent_index, index_to_swap)
+
+            parent_index = index_to_swap
+        end
+    end
+
+    def remove_max()
+        self.swap(0, self.values.size - 1)
+
+        popped_value = self.values.pop()
+        
+        if(self.values.length > 1)
+            self.bubble_down()
+        end
+        return popped_value
+    end
+
 end
 
 heap1 = Max_Binary_Heap.new()
-heap1.values = [100,99]
+heap1.values = [103,100,99,12,68]
 
-heap1.insert(110)
+
+heap1.remove_max()
 puts heap1.values
-heap1.insert(12)
+heap1.remove_max()
 puts heap1.values
-heap1.insert(68)
-puts heap1.values
-heap1.insert(103)
+heap1.remove_max()
 puts heap1.values
